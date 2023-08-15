@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/dinabang-cda/repository#readme",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.391.0",
+    "@aws-sdk/lib-dynamodb": "^3.391.0",
     "aws-sdk": "^2.1437.0",
     "https": "^1.0.0"
   },
