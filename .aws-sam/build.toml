@@ -5,7 +5,7 @@ codeuri = "C:\\Users\\gcapote\\Documents\\GitHub\\repository\\src"
 runtime = "nodejs18.x"
 architecture = "x86_64"
 handler = "app.handler"
-manifest_hash = ""
+manifest_hash = "1668c2fbce47c26ef41109af75912f9f"
 packagetype = "Zip"
 functions = ["repositoryFunction"]
 
