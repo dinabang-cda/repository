@@ -12,22 +12,22 @@ Globals:
   Api:
     TracingEnabled: true
 Resources:
-  repository:
+  repositoryFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: repository
+      CodeUri: repositoryFunction
       Handler: app.handler
       Runtime: nodejs18.x
       Architectures:
       - x86_64
       Events:
-        HelloWorld:
+        repository:
           Type: Api
           Properties:
             Path: /hello
             Method: get
     Metadata:
-      SamResourceId: repository
+      SamResourceId: repositoryFunction
   ApplicationResourceGroup:
     Type: AWS::ResourceGroups::Group
     Properties:
@@ -41,20 +41,3 @@ Resources:
       ResourceGroupName:
         Ref: ApplicationResourceGroup
       AutoConfigurationEnabled: 'true'
-Outputs:
-  repositoryApi:
-    Description: API Gateway endpoint URL for Prod stage for repository function
-    Value:
-      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/
-  repositoryFunction:
-    Description: repository Lambda Function ARN
-    Value:
-      Fn::GetAtt:
-      - repositoryFunction
-      - Arn
-  repositoryFunctionIamRole:
-    Description: Implicit IAM Role created for repository function
-    Value:
-      Fn::GetAtt:
-      - repositoryFunctionIAMRole
-      - Arn

@@ -7,6 +7,6 @@ architecture = "x86_64"
 handler = "app.handler"
 manifest_hash = ""
 packagetype = "Zip"
-functions = ["repository"]
+functions = ["repositoryFunction"]
 
 [layer_build_definitions]
