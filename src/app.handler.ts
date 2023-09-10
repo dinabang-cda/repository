@@ -19,7 +19,9 @@ export const handler = async (event, context) => {
   };
 
   try {
-    switch (event.routeKey) {
+    let routeKey = `${event.httpMethod} ${event.resource}`;
+
+    switch (routeKey) {
       case "DELETE /admin/repositories/{id}":
         await dynamo.send(
           new DeleteCommand({
@@ -63,7 +65,7 @@ export const handler = async (event, context) => {
         body = `Put item ${requestJSON.id}`;
         break;
       default:
-        throw new Error(`Unsupported route: "${event.routeKey}"`);
+        throw new Error(`Unsupported route: "${routeKey}"`);
     }
   } catch (err) {
     statusCode = 400;
