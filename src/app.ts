@@ -20,7 +20,7 @@ export const handler = async (event, context) => {
 
   try {
     switch (event.routeKey) {
-      case "DELETE /repositories/{id}":
+      case "DELETE /admin/repositories/{id}":
         await dynamo.send(
           new DeleteCommand({
             TableName: tableName,
@@ -31,7 +31,7 @@ export const handler = async (event, context) => {
         );
         body = `Deleted item ${event.pathParameters.id}`;
         break;
-      case "GET /repositories/{id}":
+      case "GET /admin/repositories/{id}":
         body = await dynamo.send(
           new GetCommand({
             TableName: tableName,
@@ -42,13 +42,13 @@ export const handler = async (event, context) => {
         );
         body = body.Item;
         break;
-      case "GET /repositories":
+      case "GET /admin/repositories":
         body = await dynamo.send(
           new ScanCommand({ TableName: tableName })
         );
         body = body.Items;
         break;
-      case "PUT /repositories":
+      case "PUT /admin/repositories/{id}":
         let requestJSON = JSON.parse(event.body);
         await dynamo.send(
           new PutCommand({
