@@ -14,10 +14,10 @@ Globals:
   Api:
     TracingEnabled: true
 Resources:
-  repositoryFunction:
+  repositoriesFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: dist/
+      CodeUri: src/
       Handler: app.handler
       Runtime: nodejs18.x
       Architectures:
@@ -26,7 +26,7 @@ Resources:
         repository:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /admin/repositories
+            Path: /repositories
             Method: get
 
   ApplicationResourceGroup:
