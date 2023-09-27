@@ -1,0 +1,10 @@
+"configuration": {
+        #"ActionMode": "CHANGE_SET_REPLACE",
+        #"Capabilities": "CAPABILITY_IAM,CAPABILITY_AUTO_EXPAND",
+        #"ChangeSetName": "pipeline-changeset",
+        #"RoleArn": "CloudFormation_Role_ARN",
+        "StackName": "sam-testing",
+        #"TemplateConfiguration": "my-pipeline-stack::template-configuration.json",
+        #"TemplatePath": "my-pipeline-stack::template-export.yml"
+    }
+	

@@ -1,8 +1,8 @@
 version = 0.1
 [default.deploy.parameters]
-stack_name = "stg"
+stack_name = "sam-testing"
 resolve_s3 = true
-s3_prefix = "stg"
+s3_prefix = "sam-testing"
 region = "sa-east-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
