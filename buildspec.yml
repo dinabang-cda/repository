@@ -10,8 +10,8 @@ phases:
       - echo Build started on `date`
       - echo Compiling the dist folder
       - npm run-script build
-      #- export BUCKET=pipeline2023dinabang
-      #- aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET  --output-template-file outputtemplate.yaml
+      - export BUCKET=pipeline2023dinabang
+      - aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET  --output-template-file outputtemplate.yaml
   post_build:
     commands:
       - echo Build completed on `date`
