@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: "sam-repository\nSample SAM Template for sam-repository\n"
+Globals:
+  Function:
+    Timeout: 3
+    Tracing: Active
+  Api:
+    TracingEnabled: true
+Resources:
+  repositoriesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://pipeline2023dinabang/e90dcb16eccb4aa9fc0b7207e4d17cd4
+      Handler: app.handler
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      Events:
+        repository:
+          Type: Api
+          Properties:
+            Path: /repositories
+            Method: get
+  ApplicationResourceGroup:
+    Type: AWS::ResourceGroups::Group
+    Properties:
+      Name:
+        Fn::Sub: ApplicationInsights-SAM-${AWS::StackName}
+      ResourceQuery:
+        Type: CLOUDFORMATION_STACK_1_0
+  ApplicationInsightsMonitoring:
+    Type: AWS::ApplicationInsights::Application
+    Properties:
+      ResourceGroupName:
+        Ref: ApplicationResourceGroup
+      AutoConfigurationEnabled: 'true'
